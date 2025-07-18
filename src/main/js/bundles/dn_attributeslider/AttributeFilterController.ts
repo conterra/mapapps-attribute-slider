@@ -59,8 +59,20 @@ export class AttributeFilterController {
             return;
         }
 
+        const model = this._model!;
+        const applyToGroupContents = model.applyToGroupContents;
         this.targetLayers.forEach((layer) => {
-            layer.definitionExpression = `${this._model!.targetAttribute} > ${sliderValue.value}`;
+            if (applyToGroupContents && layer.type === "group") {
+                layer.layers.forEach((sublayer) => {
+                    if (sublayer.fields?.some(field => field.name === model.targetAttribute)) {
+                        sublayer.definitionExpression = `${model.targetAttribute} > ${sliderValue.value}`;
+                    } else {
+                        console.info(`Attribute "${model.targetAttribute}" not found in sublayer "${sublayer.title}". Did not apply definition expression.`);
+                    }
+                });
+            } else {
+                layer.definitionExpression = `${model.targetAttribute} > ${sliderValue.value}`;
+            }
         });
     }
 

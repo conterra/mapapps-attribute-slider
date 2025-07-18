@@ -21,6 +21,7 @@ export interface AttributeFilterWidgetModelProperties {
 
     layerIds: string[];
     targetAttribute: string;
+    applyToGroupContents: boolean; // Optional property to apply to group contents
 }
 
 export class AttributeFilterWidgetModel extends Mutable { }
@@ -29,5 +30,6 @@ properties(AttributeFilterWidgetModel, {
     sliderValue: 0,
 
     layerIds: [],
-    targetAttribute: ""
+    targetAttribute: "",
+    applyToGroupContents: true
 });
