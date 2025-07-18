@@ -14,6 +14,20 @@
 /// limitations under the License.
 ///
 
-import "ct/tools/Tool";
+import { Mutable, properties } from "apprt-core/Mutable";
 
-export { Hello } from "./Hello";
+export interface AttributeFilterWidgetModelProperties {
+    sliderValue: number;
+
+    layerIds: string[];
+    targetAttribute: string;
+}
+
+export class AttributeFilterWidgetModel extends Mutable { }
+
+properties(AttributeFilterWidgetModel, {
+    sliderValue: 0,
+
+    layerIds: [],
+    targetAttribute: ""
+});

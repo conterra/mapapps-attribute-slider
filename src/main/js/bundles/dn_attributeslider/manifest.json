@@ -1,0 +1,112 @@
+{
+    "name": "dn_attributeslider",
+    "version": "1.0.0-SNAPSHOT",
+    "title": "${bundleName}",
+    "description": "${bundleDescription}",
+    "productName": "devnet-mapapps-attribute-slider",
+    "vendor": "con terra GmbH",
+    "main": "",
+    "keywords": [
+        "sample"
+    ],
+    "i18n": [
+        "bundle"
+    ],
+    "dependencies": {
+        "ct": "^4.19.0",
+        "apprt-vue": "^4.19.0",
+        "apprt-core": "^4.19.0",
+        "apprt-binding": "^4.19.0"
+    },
+    "layout-widgets": [
+        {
+            "widgetRole": "attributeFilterWidget",
+            "window": {
+                "title": "${ui.windowTitle}",
+                "closable": true,
+                "minimizeOnClose": true,
+                "dockTool": "attributeFilterWidgetToggleTool",
+                "marginBox": {
+                    "w": 850,
+                    "h": 480
+                },
+                "minSize": {
+                    "w": 800,
+                    "h": 400
+                }
+            }
+        }
+    ],
+    "components": [
+        {
+            "name": "Config",
+            "impl": "./AttributeFilterWidgetModel",
+            "provides": [
+                "dn_attributeslider.AttributeFilterWidgetModel"
+            ],
+            "propertiesConstructor": true,
+            "properties": {
+                "layerIds": [
+                    "sights"
+                ],
+                "targetAttribute": "HAUSNR"
+            },
+            "references": []
+        },
+        {
+            "name": "AttributeFilterWidgetFactory",
+            "provides": [
+                "dijit.Widget"
+            ],
+            "instanceFactory": true,
+            "properties": {
+                "widgetRole": "attributeFilterWidget"
+            },
+            "references": [
+                {
+                    "name": "_model",
+                    "providing": "dn_attributeslider.AttributeFilterWidgetModel"
+                },
+                {
+                    "name": "_controller",
+                    "providing": "dn_attributeslider.AttributeFilterController"
+                }
+            ]
+        },
+        {
+            "name": "AttributeFilterController",
+            "provides": [
+                "dn_attributeslider.AttributeFilterController"
+            ],
+            "references": [
+                {
+                    "name": "_model",
+                    "providing": "dn_attributeslider.AttributeFilterWidgetModel"
+                },
+                {
+                    "name": "_mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel"
+                }
+            ]
+        },
+        {
+            "name": "AttributeFilterWidgetToggleTool",
+            "impl": "ct/tools/Tool",
+            "provides": [
+                "ct.tools.Tool"
+            ],
+            "propertiesConstructor": true,
+            "properties": {
+                "id": "attributeFilterWidgetToggleTool",
+                "title": "${ui.tool.title}",
+                "tooltip": "${ui.tool.tooltip}",
+                "toolRole": "toolset",
+                "iconClass": "icon-signal-4",
+                "togglable": true,
+                "rules": {
+                    "noGroup": true
+                }
+            }
+        }
+    ]
+}

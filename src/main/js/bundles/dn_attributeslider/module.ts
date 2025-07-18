@@ -14,10 +14,8 @@
 /// limitations under the License.
 ///
 
-import { Messages } from "../bundle";
+import "ct/tools/Tool";
 
-export default {
-    bundleName: "Hallo Welt",
-    bundleDescription: "Das Modul gibt Hallo aus.",
-    hello: "Hallo Welt"
-} satisfies Messages;
+export { AttributeFilterController } from "./AttributeFilterController";
+export { AttributeFilterWidgetModel} from "./AttributeFilterWidgetModel";
+export { AttributeFilterWidgetFactory } from "./AttributeFilterWidgetFactory";

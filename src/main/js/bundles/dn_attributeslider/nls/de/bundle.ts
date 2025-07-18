@@ -14,4 +14,17 @@
 /// limitations under the License.
 ///
 
-import "./Hello";
+import { Messages } from "../bundle";
+
+export default {
+    bundleName: "Attribute Slider",
+    bundleDescription: "Das Bundle bietet einen Attributregler zur Filterung der angezeigten Daten auf der Karte.",
+    ui: {
+        windowTitle: "Attribute Slider",
+        tool: {
+            title: "Attribute Slider",
+            tooltip: "Attribute Slider"
+
+        }
+    }
+} satisfies Messages;

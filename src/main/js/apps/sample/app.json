@@ -34,7 +34,8 @@
             "theme-autumn",
             "toc",
             "toolset",
-            "dn_imprintprivacy"
+            "dn_imprintprivacy",
+            "dn_attributeslider"
         ],
         "i18n": [
             "bundle"
@@ -323,6 +324,7 @@
                             "layers": [
                                 {
                                     "title": "${map.koeln3.sights.title}",
+                                    "id": "sights",
                                     "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/4",
                                     "type": "AGS_FEATURE",
                                     "popupTemplate": {
@@ -425,6 +427,7 @@
                     {
                         "id": "mapview_tools",
                         "tools": [
+                            "attributeFilterWidgetToggleTool",
                             "locateMeTool",
                             "zoomInTool",
                             "zoomOutTool",

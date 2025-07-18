@@ -16,9 +16,15 @@
 
 const i18n = {
     root: {
-        bundleName: "Hello World",
-        bundleDescription: "This bundle prints Hello.",
-        hello: "Hello World"
+        bundleName: "Attribute Slider",
+        bundleDescription: "This bundle provides an attribute slider to filter displayed data in the map.",
+        ui: {
+            windowTitle: "Attribute Slider",
+            tool: {
+                title: "Attribute Slider",
+                tooltip: "Attribute Slider"
+            }
+        }
     },
     de: true
 };
