@@ -16,15 +16,14 @@
 
 -->
 <template>
-    <div>
+    <div class="attributeFilterWidget--container">
         <v-slider
             v-model="sliderValue"
-            :min="0"
-            :max="50"
-            :step="10"
-            :ticks="true"
-            :tick-labels="['0', '1', '2', '3', '4', '5']"
-            label="Attribute Filter"
+            :min="sliderSettings.min"
+            :max="sliderSettings.max"
+            :step="sliderSettings.step"
+            :ticks="sliderSettings.ticks"
+            :tick-labels="sliderSettings.tickLabels"
         />
     </div>
 </template>
@@ -32,6 +31,8 @@
 <script lang="ts">
     import Bindable from "apprt-vue/mixins/Bindable";
     import { defineComponent } from 'vue';
+
+    import type { SliderSettings } from "dn_attributeslider/api";
 
     export default defineComponent({
         mixins: [Bindable],
@@ -44,7 +45,8 @@
         },
         data() {
             return {
-                sliderValue: 0
+                sliderValue: 0,
+                sliderSettings: {} as SliderSettings
             };
         }
     });

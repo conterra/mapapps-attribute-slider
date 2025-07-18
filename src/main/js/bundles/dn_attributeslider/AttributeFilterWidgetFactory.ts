@@ -44,11 +44,12 @@ export class AttributeFilterWidgetFactory {
     }
 
     initComponent(): void {
-        const vm: Vue = this.vm = new Vue(AttributeFilterWidget);
-        vm.i18n = this._i18n!.get().ui;
-
         const model = this._model!;
         const controller = this._controller!;
+
+        const vm: Vue = this.vm = new Vue(AttributeFilterWidget);
+        vm.i18n = this._i18n!.get().ui;
+        vm.sliderSettings = model.sliderSettings;
 
         model.watch("sliderValue", (newValue: any) => {
             controller.applyDefinitionExpressionToLayers(newValue);

@@ -37,6 +37,14 @@
             }
         }
     ],
+    "cssThemesExtension": [
+        {
+            "name": "*",
+            "files": [
+                "./css/styles.css"
+            ]
+        }
+    ],
     "components": [
         {
             "name": "Config",
@@ -50,7 +58,14 @@
                     "sights"
                 ],
                 "targetAttribute": "HAUSNR",
-                "applyToGroupContents": true
+                "applyToGroupContents": true,
+                "sliderSettings": {
+                    "min": 0,
+                    "max": 5,
+                    "step": 1,
+                    "ticks": true,
+                    "tickLabels": ["0", "1", "2", "3", "4", "5"]
+                }
             },
             "references": []
         },
