@@ -1,5 +1,5 @@
 # dn_attributeslider
-The Attribute Slider Bundle provides attribute-based filtering capabilities for layers .
+The Attribute Slider Bundle provides attribute-based filtering capabilities for layers.
 
 ## Usage
 1. Add the bundle `dn_attributeslider` to your app.
@@ -17,31 +17,18 @@ To make the functions of this bundle available to the user, the following tool c
 ```json
 "dn_attributeslider": {
     "Config": {
-        "sliderOptions": {
-            "min": 0,
-            "max": 100,
-            "step": 1,
-            "defaultValue": 50,
-            "showTicks": true,
-            "showLabels": true
-        },
-        "layerOptions": {
-            "allowedLayers": ["layer1", "layer2"],
-            "defaultLayer": "layer1"
-        },
-        "fieldOptions": {
-            "allowedFields": ["fieldA", "fieldB"],
-            "defaultField": "fieldA"
-        }
+        "layerIds": ["layer1", "layer2"],
+        "targetAttribute": "fieldA",
+        "applyToGroupContents": true
     }
 }
 ```
 
-| Property      | Type   | Possible Values | Default | Description                          |
-|---------------|--------|-----------------|---------|--------------------------------------|
-| sliderOptions | Object |                 |         | Options for the attribute slider UI. |
-| layerOptions  | Object |                 |         | Configuration for selectable layers. |
-| fieldOptions  | Object |                 |         | Configuration for selectable fields. |
+| Property              | Type      | Default   | Description                                                        |
+|-----------------------|-----------|-----------|--------------------------------------------------------------------|
+| layerIds              | string[]  | []        | List of layer IDs to apply the filter to.                          |
+| targetAttribute       | string    | ""        | The attribute field to filter on.                                  |
+| applyToGroupContents  | boolean   | true      | If true, applies the filter to all sublayers in group layers.      |
 
 ### Customize widget configuration
 To customize the appearance of the widget, use the widgetRole _attributeSliderWidget_.
