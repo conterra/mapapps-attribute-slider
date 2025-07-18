@@ -62,7 +62,7 @@ export class AttributeFilterWidgetFactory {
     }
 
     createInstance(): typeof VueDijit {
-        return VueDijit(this.vm, { class: "labeling-widget" });
+        return VueDijit(this.vm);
     }
 
 }

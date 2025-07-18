@@ -27,13 +27,12 @@
                 "minimizeOnClose": true,
                 "dockTool": "attributeFilterWidgetToggleTool",
                 "marginBox": {
-                    "w": 850,
-                    "h": 480
+                    "w": 450,
+                    "h": 100,
+                    "r": 25,
+                    "t": 175
                 },
-                "minSize": {
-                    "w": 800,
-                    "h": 400
-                }
+                "windowClass": "noTitleBarAndWindowTools"
             }
         }
     ],
