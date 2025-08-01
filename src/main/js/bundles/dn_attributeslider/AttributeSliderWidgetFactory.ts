@@ -55,9 +55,16 @@ export class AttributeSliderWidgetFactory {
         vm.sliderSettings = model.sliderSettings;
 
         model.sliderValue = model.sliderSettings.sliderStartValue || model.sliderSettings.min;
+
+        let sliderDebounceTimeout: ReturnType<typeof setTimeout> | undefined;
         model.watch("sliderValue", (newValue: any) => {
-            controller.removeSliderDefinitionExpressionFromLayers();
-            controller.addSliderDefinitionExpressionToLayers(newValue);
+            if (sliderDebounceTimeout) {
+                clearTimeout(sliderDebounceTimeout);
+            }
+            sliderDebounceTimeout = setTimeout(() => {
+                controller.removeSliderDefinitionExpressionFromLayers();
+                controller.addSliderDefinitionExpressionToLayers(newValue);
+            }, model.sliderChangeTimeout || 0);
         });
 
         this.attributeSliderModelBinding = Binding.for(vm, model)

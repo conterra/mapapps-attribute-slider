@@ -19,6 +19,7 @@ The `dn_attributeslider` bundle provides an interactive slider widget for filter
             "attributeValueRelation": ">=",
             "applyDefinitionExpressionOnWidgetOpen": true,
             "removeDefinitionExpressionOnWidgetClose": true,
+            "sliderChangeTimeout": 500,
             "sliderSettings": {
                 "sliderStartValue": null,
                 "min": 0,
@@ -45,6 +46,7 @@ The `dn_attributeslider` bundle provides an interactive slider widget for filter
 | attributeValueRelation                    | string   | "=", "<", ">", "<=", ">=", "!=" | ">="     | The comparison operator for the filter                       |
 | applyDefinitionExpressionOnWidgetOpen     | boolean  | true, false                     | true     | Whether to apply the filter when the widget is opened        |
 | removeDefinitionExpressionOnWidgetClose   | boolean  | true, false                     | true     | Whether to remove the filter when the widget is closed       |
+| sliderChangeTimeout                       | number   | Any positive number (ms)        | 500      | Delay in milliseconds before applying the filter after slider value changes |
 | sliderSettings                            | object   | See below                       |          | Settings for the slider UI                                   |
 | sliderSettings.sliderStartValue           | number   | Any number                      | null     | Initial value of the slider                                  |
 | sliderSettings.min                        | number   | Any number                      | 0        | Minimum slider value                                         |

@@ -52,6 +52,7 @@
                 "attributeValueRelation": ">=",
                 "applyDefinitionExpressionOnWidgetOpen": true,
                 "removeDefinitionExpressionOnWidgetClose": true,
+                "sliderChangeTimeout": 500,
                 "sliderSettings": {
                     "sliderStartValue": 40,
                     "min": 0,
