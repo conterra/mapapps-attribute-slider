@@ -54,29 +54,77 @@ export class AttributeFilterController {
             .filter((layer): layer is __esri.Layer => !!layer);
     }
 
-    addSliderDefinitionExpressionToLayers(sliderValue: { value: number }): void {
+    removeSliderDefinitionExpressionFromLayers(): void {
         if (!this.view || !this.targetLayers) {
             return;
         }
 
         const model = this._model!;
         const applyToGroupContents = model.applyToGroupContents;
+
+        this.targetLayers.forEach((layer) => {
+            if (layer.type !== "group") {
+                const featureLayer = layer as __esri.FeatureLayer;
+                featureLayer.definitionExpression =
+                    this.cutSliderDefinitionExpression(featureLayer.definitionExpression);
+            }
+            else if (applyToGroupContents && layer.type === "group") {
+                (layer as __esri.GroupLayer).layers.forEach((sublayer) => {
+                    if (sublayer.type === "feature") {
+                        const featureLayer = sublayer as __esri.FeatureLayer;
+                        featureLayer.definitionExpression =
+                            this.cutSliderDefinitionExpression(featureLayer.definitionExpression);
+                    }
+                });
+            }
+            else {
+                console.warn(
+                    `Layer "${layer.title}" is a group layer but "applyToGroupContents" is false.
+                     Skipping definition expression removal.`
+                );
+            }
+        });
+    }
+
+    private cutSliderDefinitionExpression(currentExpression: string | undefined): string {
+        if (!currentExpression) {
+            return "";
+        }
+
+        const model = this._model!;
+        const attribute = model.targetAttribute;
+        const relation = model.attributeValueRelation;
+
+        const regex = new RegExp(`\\b${attribute}\\s*${relation}\\s*\\d+`, "g");
+        return currentExpression.replace(regex, "").trim();
+    }
+
+    addSliderDefinitionExpressionToLayers(sliderValue: { value: number }): void {
+        if (!this.view || !this.targetLayers) {
+            return;
+        }
+
+        const model = this._model!;
+        const attribute = model.targetAttribute;
+        const relation = model.attributeValueRelation;
+        const applyToGroupContents = model.applyToGroupContents;
+
         this.targetLayers.forEach((layer) => {
             if (layer.type !== "group") {
                 (layer as __esri.FeatureLayer).definitionExpression =
-                    `${model.targetAttribute} ${model.attributeValueRelation} ${sliderValue.value}`;
+                    `${attribute} ${relation} ${sliderValue.value}`;
             }
             else if (applyToGroupContents && layer.type === "group") {
                 (layer as __esri.GroupLayer).layers.forEach((sublayer) => {
                     if (sublayer.type !== "feature") return;
 
                     const featureLayer = sublayer as __esri.FeatureLayer;
-                    if (featureLayer.fields?.some(field => field.name === model.targetAttribute)) {
+                    if (featureLayer.fields?.some(field => field.name === attribute)) {
                         featureLayer.definitionExpression =
-                            `${model.targetAttribute} ${model.attributeValueRelation} ${sliderValue.value}`;
+                            `${attribute} ${relation} ${sliderValue.value}`;
                     } else {
                         console.warn(
-                            `Attribute "${model.targetAttribute}" not found in sublayer "${sublayer.title}".
+                            `Attribute "${attribute}" not found in sublayer "${sublayer.title}".
                              Did not apply definition expression.`
                         );
                     }

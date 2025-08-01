@@ -53,6 +53,7 @@ export class AttributeFilterWidgetFactory {
 
         model.sliderValue = model.sliderSettings.sliderStartValue || model.sliderSettings.min;
         model.watch("sliderValue", (newValue: any) => {
+            controller.removeSliderDefinitionExpressionFromLayers();
             controller.addSliderDefinitionExpressionToLayers(newValue);
         });
 
