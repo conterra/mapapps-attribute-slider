@@ -42,6 +42,31 @@
         ]
     },
     "bundles": {
+        "dn_attributeslider": {
+            "Config": {
+                "layerIds": [
+                    "sights"
+                ],
+                "applyToGroupContents": false,
+                "targetAttribute": "HAUSNR",
+                "attributeValueRelation": ">=",
+                "applyDefinitionExpressionOnWidgetOpen": true,
+                "removeDefinitionExpressionOnWidgetClose": true,
+                "sliderSettings": {
+                    "sliderStartValue": 40,
+                    "min": 0,
+                    "max": 50,
+                    "step": 10,
+                    "visibleElements": {
+                        "ticks": "always",
+                        "tickLabels": [],
+                        "maxLabel": true,
+                        "minLabel": true,
+                        "thumbLabel": "always"
+                    }
+                }
+            }
+        },
         "agssearch": {
             "AutoStoreRegistration": {
                 "componentEnabled": true
@@ -421,7 +446,7 @@
                 "showLayerLegend": true
             }
         },
-         "toolrules": {
+        "toolrules": {
             "ToolActiveStateManager": {
                 "activateOnStartToolIds": [
                     "attributeSliderWidgetToggleTool"
