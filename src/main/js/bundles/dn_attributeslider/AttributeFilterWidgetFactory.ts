@@ -51,6 +51,7 @@ export class AttributeFilterWidgetFactory {
         vm.i18n = this._i18n!.get().ui;
         vm.sliderSettings = model.sliderSettings;
 
+        model.sliderValue = model.sliderSettings.sliderStartValue;
         model.watch("sliderValue", (newValue: any) => {
             controller.applyDefinitionExpressionToLayers(newValue);
         });

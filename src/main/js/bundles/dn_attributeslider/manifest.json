@@ -58,8 +58,8 @@
                 "layerIds": [
                     "sights"
                 ],
-                "sliderValue": 30,
                 "sliderSettings": {
+                    "sliderStartValue": 10,
                     "min": 0,
                     "max": 50,
                     "step": 10,
