@@ -57,6 +57,7 @@
                     "sights"
                 ],
                 "targetAttribute": "HAUSNR",
+                "attributeValueRelation": ">=",
                 "applyToGroupContents": false,
                 "sliderSettings": {
                     "sliderStartValue": null,

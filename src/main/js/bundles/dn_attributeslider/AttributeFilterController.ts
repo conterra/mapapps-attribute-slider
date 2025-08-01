@@ -54,7 +54,7 @@ export class AttributeFilterController {
             .filter((layer): layer is __esri.Layer => !!layer);
     }
 
-    applyDefinitionExpressionToLayers(sliderValue: { value: number }): void {
+    addSliderDefinitionExpressionToLayers(sliderValue: { value: number }): void {
         if (!this.view || !this.targetLayers) {
             return;
         }
@@ -62,16 +62,31 @@ export class AttributeFilterController {
         const model = this._model!;
         const applyToGroupContents = model.applyToGroupContents;
         this.targetLayers.forEach((layer) => {
-            if (applyToGroupContents && layer.type === "group") {
-                layer.layers.forEach((sublayer) => {
-                    if (sublayer.fields?.some(field => field.name === model.targetAttribute)) {
-                        sublayer.definitionExpression = `${model.targetAttribute} > ${sliderValue.value}`;
+            if (layer.type !== "group") {
+                (layer as __esri.FeatureLayer).definitionExpression =
+                    `${model.targetAttribute} ${model.attributeValueRelation} ${sliderValue.value}`;
+            }
+            else if (applyToGroupContents && layer.type === "group") {
+                (layer as __esri.GroupLayer).layers.forEach((sublayer) => {
+                    if (sublayer.type !== "feature") return;
+
+                    const featureLayer = sublayer as __esri.FeatureLayer;
+                    if (featureLayer.fields?.some(field => field.name === model.targetAttribute)) {
+                        featureLayer.definitionExpression =
+                            `${model.targetAttribute} ${model.attributeValueRelation} ${sliderValue.value}`;
                     } else {
-                        console.info(`Attribute "${model.targetAttribute}" not found in sublayer "${sublayer.title}". Did not apply definition expression.`);
+                        console.warn(
+                            `Attribute "${model.targetAttribute}" not found in sublayer "${sublayer.title}".
+                             Did not apply definition expression.`
+                        );
                     }
                 });
-            } else {
-                layer.definitionExpression = `${model.targetAttribute} <= ${sliderValue.value}`;
+            }
+            else {
+                console.warn(
+                    `Layer "${layer.title}" is a group layer but "applyToGroupContents" is false.
+                     Skipping definition expression application.`
+                );
             }
         });
     }
@@ -88,7 +103,7 @@ export class AttributeFilterController {
             } else {
                 const watcher = mapWidgetModel.watch("view", ({ value: view }) => {
                     watcher.remove();
-                    resolve(view);
+                    resolve(view!);
                 });
             }
         });
