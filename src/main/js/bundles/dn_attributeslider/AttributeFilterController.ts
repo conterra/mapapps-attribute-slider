@@ -13,6 +13,7 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
+import { whenOnce } from "esri/core/reactiveUtils";
 
 import type { InjectedReference } from "apprt-core/InjectedReference";
 import type { AttributeFilterWidgetModel } from "./AttributeFilterWidgetModel";
@@ -32,9 +33,10 @@ export class AttributeFilterController {
     private initComponent(): void {
         const model = this._model!;
 
-        this.getView().then((view) => {
+        this.getView().then(async (view) => {
             this.view = view;
             this.targetLayers = this.getTargetLayers(model.layerIds);
+            await this.targetLayersAreLoaded();
         });
     }
 
@@ -52,6 +54,19 @@ export class AttributeFilterController {
                 return undefined;
             })
             .filter((layer): layer is __esri.Layer => !!layer);
+    }
+
+    private async targetLayersAreLoaded(): Promise<void> {
+        if (!this.targetLayers) {
+            return;
+        }
+        const promises = this.targetLayers.map(layer => {
+            if (layer.loaded) {
+                return Promise.resolve();
+            }
+            return whenOnce(() => layer.loaded).then(() => {});
+        });
+        await Promise.all(promises);
     }
 
     removeSliderDefinitionExpressionFromLayers(): void {

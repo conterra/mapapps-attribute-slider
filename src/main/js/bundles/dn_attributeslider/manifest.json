@@ -14,6 +14,7 @@
     ],
     "dependencies": {
         "ct": "^4.18.0",
+        "esri": "^4.18.0",
         "apprt-vue": "^4.18.0",
         "apprt-core": "^4.18.0",
         "apprt-binding": "^4.18.0"
@@ -56,11 +57,13 @@
                 "layerIds": [
                     "sights"
                 ],
+                "applyToGroupContents": false,
                 "targetAttribute": "HAUSNR",
                 "attributeValueRelation": ">=",
-                "applyToGroupContents": false,
+                "applyDefinitionExpressionOnWidgetOpen": true,
+                "removeDefinitionExpressionOnWidgetClose": true,
                 "sliderSettings": {
-                    "sliderStartValue": null,
+                    "sliderStartValue": 40,
                     "min": 0,
                     "max": 50,
                     "step": 10,
@@ -92,6 +95,11 @@
                 {
                     "name": "_controller",
                     "providing": "dn_attributeslider.AttributeFilterController"
+                },
+                {
+                    "name": "_attributeFilterWidgetToggleTool",
+                    "providing": "ct.tools.Tool",
+                    "filter": "(id=attributeFilterWidgetToggleTool)"
                 }
             ]
         },

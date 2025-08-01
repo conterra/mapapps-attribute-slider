@@ -23,14 +23,17 @@ import type { InjectedReference } from "apprt-core/InjectedReference";
 import type { MessagesReference } from "./nls/bundle";
 import type { AttributeFilterWidgetModel } from "./AttributeFilterWidgetModel";
 import type { AttributeFilterController } from "./AttributeFilterController";
+import type Tool from "ct/tools/Tool";
 
 export class AttributeFilterWidgetFactory {
     private vm?: Vue;
+    private toolActiveWatcher?: __esri.WatchHandle;
     private attributeFilterModelBinding?: Bindable;
 
     private _i18n!: InjectedReference<MessagesReference>;
     private _model: InjectedReference<AttributeFilterWidgetModel>;
     private _controller: InjectedReference<AttributeFilterController>;
+    private _attributeFilterWidgetToggleTool: InjectedReference<Tool>;
 
     activate(): void {
         this.initComponent();
@@ -61,10 +64,28 @@ export class AttributeFilterWidgetFactory {
             .syncAll("sliderValue")
             .enable()
             .syncToLeftNow();
+
+        this.createToolActiveWatcher();
     }
 
     createInstance(): typeof VueDijit {
         return VueDijit(this.vm);
+    }
+
+    private createToolActiveWatcher(): void {
+        const tool = this._attributeFilterWidgetToggleTool!;
+
+        this.toolActiveWatcher = tool.watch("active", (name, oldValue, newValue) => {
+            const model = this._model!;
+            const controller = this._controller;
+
+            if (newValue && model.applyDefinitionExpressionOnWidgetOpen && controller) {
+                controller.addSliderDefinitionExpressionToLayers({value: model.sliderValue});
+            }
+            else if (!newValue && model.removeDefinitionExpressionOnWidgetClose && controller) {
+                controller.removeSliderDefinitionExpressionFromLayers();
+            }
+        });
     }
 
 }
