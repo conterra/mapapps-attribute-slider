@@ -17,14 +17,33 @@
 -->
 <template>
     <div class="attributeFilterWidget--container">
-        <v-slider
-            v-model="sliderValue"
-            :min="sliderSettings.min"
-            :max="sliderSettings.max"
-            :step="sliderSettings.step"
-            :ticks="sliderSettings.ticks"
-            :tick-labels="sliderSettings.tickLabels"
-        />
+        <div
+            class="attributeFilterWidget--slider-layout"
+        >
+            <span
+                v-if="sliderSettings.visibleElements.minLabel"
+                id="sliderMinLabel"
+                class="attributeFilterWidget--slider-label"
+            >
+                {{ sliderSettings.min }}
+            </span>
+            <v-slider
+                v-model="sliderValue"
+                :min="sliderSettings.min"
+                :max="sliderSettings.max"
+                :step="sliderSettings.step"
+                :ticks="sliderSettings.visibleElements.ticks"
+                :tick-labels="sliderSettings.visibleElements.tickLabels"
+                :thumb-label="sliderSettings.visibleElements.thumbLabel"
+            />
+            <span
+                v-if="sliderSettings.visibleElements.maxLabel"
+                id="sliderMaxLabel"
+                class="attributeFilterWidget--slider-label"
+            >
+                {{ sliderSettings.max }}
+            </span>
+        </div>
     </div>
 </template>
 

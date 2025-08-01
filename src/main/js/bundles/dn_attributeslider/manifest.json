@@ -13,10 +13,10 @@
         "bundle"
     ],
     "dependencies": {
-        "ct": "^4.19.0",
-        "apprt-vue": "^4.19.0",
-        "apprt-core": "^4.19.0",
-        "apprt-binding": "^4.19.0"
+        "ct": "^4.18.0",
+        "apprt-vue": "^4.18.0",
+        "apprt-core": "^4.18.0",
+        "apprt-binding": "^4.18.0"
     },
     "layout-widgets": [
         {
@@ -27,12 +27,12 @@
                 "minimizeOnClose": true,
                 "dockTool": "attributeFilterWidgetToggleTool",
                 "marginBox": {
-                    "w": 450,
-                    "h": 100,
+                    "w": 550,
+                    "h": 120,
                     "r": 25,
                     "t": 175
                 },
-                "windowClass": "noTitleBarAndWindowTools"
+                "windowClass": "noPadding"
             }
         }
     ],
@@ -63,15 +63,13 @@
                     "min": 0,
                     "max": 50,
                     "step": 10,
-                    "ticks": true,
-                    "tickLabels": [
-                        "0 cm",
-                        "10 cm",
-                        "20 cm",
-                        "30 cm",
-                        "40 cm",
-                        "50 cm"
-                    ]
+                    "visibleElements": {
+                        "ticks": "always",
+                        "tickLabels": [],
+                        "maxLabel": true,
+                        "minLabel": true,
+                        "thumbLabel": "always"
+                    }
                 }
             },
             "references": []

@@ -16,4 +16,24 @@
 .ctAppRoot .attributeFilterWidget .attributeFilterWidget--container {
     height: 100%;
     overflow: hidden;
+
+    .attributeFilterWidget--slider-layout {
+        display: flex;
+        flex-direction: row;
+        margin-top: 25px;
+
+        span.attributeFilterWidget--slider-label {
+            padding-top: 18px;
+            padding-left: 10px;
+            padding-right: 10px;
+
+            &#sliderMinLabel {
+                padding-right: 15px;
+            }
+
+            &#sliderMaxLabel {
+                padding-left: 15px;
+            }
+        }
+    }
 }
