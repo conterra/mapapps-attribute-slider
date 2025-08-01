@@ -16,14 +16,14 @@
 
 -->
 <template>
-    <div class="attributeFilterWidget--container">
+    <div class="attributeSliderWidget--container">
         <div
-            class="attributeFilterWidget--slider-layout"
+            class="attributeSliderWidget--slider-layout"
         >
             <span
                 v-if="sliderSettings.visibleElements.minLabel"
                 id="sliderMinLabel"
-                class="attributeFilterWidget--slider-label"
+                class="attributeSliderWidget--slider-label"
             >
                 {{ sliderSettings.min }}
             </span>
@@ -39,7 +39,7 @@
             <span
                 v-if="sliderSettings.visibleElements.maxLabel"
                 id="sliderMaxLabel"
-                class="attributeFilterWidget--slider-label"
+                class="attributeSliderWidget--slider-label"
             >
                 {{ sliderSettings.max }}
             </span>

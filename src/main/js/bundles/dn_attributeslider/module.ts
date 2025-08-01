@@ -16,6 +16,6 @@
 
 import "ct/tools/Tool";
 
-export { AttributeFilterController } from "./AttributeFilterController";
-export { AttributeFilterWidgetModel} from "./AttributeFilterWidgetModel";
-export { AttributeFilterWidgetFactory } from "./AttributeFilterWidgetFactory";
+export { AttributeSliderController } from "./AttributeSliderController";
+export { AttributeSliderWidgetModel } from "./AttributeSliderWidgetModel";
+export { AttributeSliderWidgetFactory } from "./AttributeSliderWidgetFactory";

@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-.ctAppRoot .attributeFilterWidget .attributeFilterWidget--container {
+.ctAppRoot .attributeSliderWidget .attributeSliderWidget--container {
     height: 100%;
     overflow: hidden;
 
-    .attributeFilterWidget--slider-layout {
+    .attributeSliderWidget--slider-layout {
         display: flex;
         flex-direction: row;
         margin-top: 25px;
 
-        span.attributeFilterWidget--slider-label {
+        span.attributeSliderWidget--slider-label {
             padding-top: 18px;
             padding-left: 10px;
             padding-right: 10px;

@@ -21,12 +21,12 @@
     },
     "layout-widgets": [
         {
-            "widgetRole": "attributeFilterWidget",
+            "widgetRole": "attributeSliderWidget",
             "window": {
                 "title": "${ui.windowTitle}",
                 "closable": true,
                 "minimizeOnClose": true,
-                "dockTool": "attributeFilterWidgetToggleTool",
+                "dockTool": "attributeSliderWidgetToggleTool",
                 "marginBox": {
                     "w": 550,
                     "h": 120,
@@ -48,9 +48,9 @@
     "components": [
         {
             "name": "Config",
-            "impl": "./AttributeFilterWidgetModel",
+            "impl": "./AttributeSliderWidgetModel",
             "provides": [
-                "dn_attributeslider.AttributeFilterWidgetModel"
+                "dn_attributeslider.AttributeSliderWidgetModel"
             ],
             "propertiesConstructor": true,
             "properties": {
@@ -79,39 +79,39 @@
             "references": []
         },
         {
-            "name": "AttributeFilterWidgetFactory",
+            "name": "AttributeSliderWidgetFactory",
             "provides": [
                 "dijit.Widget"
             ],
             "instanceFactory": true,
             "properties": {
-                "widgetRole": "attributeFilterWidget"
+                "widgetRole": "attributeSliderWidget"
             },
             "references": [
                 {
                     "name": "_model",
-                    "providing": "dn_attributeslider.AttributeFilterWidgetModel"
+                    "providing": "dn_attributeslider.AttributeSliderWidgetModel"
                 },
                 {
                     "name": "_controller",
-                    "providing": "dn_attributeslider.AttributeFilterController"
+                    "providing": "dn_attributeslider.AttributeSliderController"
                 },
                 {
-                    "name": "_attributeFilterWidgetToggleTool",
+                    "name": "_attributeSliderWidgetToggleTool",
                     "providing": "ct.tools.Tool",
-                    "filter": "(id=attributeFilterWidgetToggleTool)"
+                    "filter": "(id=attributeSliderWidgetToggleTool)"
                 }
             ]
         },
         {
-            "name": "AttributeFilterController",
+            "name": "AttributeSliderController",
             "provides": [
-                "dn_attributeslider.AttributeFilterController"
+                "dn_attributeslider.AttributeSliderController"
             ],
             "references": [
                 {
                     "name": "_model",
-                    "providing": "dn_attributeslider.AttributeFilterWidgetModel"
+                    "providing": "dn_attributeslider.AttributeSliderWidgetModel"
                 },
                 {
                     "name": "_mapWidgetModel",
@@ -120,14 +120,14 @@
             ]
         },
         {
-            "name": "AttributeFilterWidgetToggleTool",
+            "name": "AttributeSliderWidgetToggleTool",
             "impl": "ct/tools/Tool",
             "provides": [
                 "ct.tools.Tool"
             ],
             "propertiesConstructor": true,
             "properties": {
-                "id": "attributeFilterWidgetToggleTool",
+                "id": "attributeSliderWidgetToggleTool",
                 "title": "${ui.tool.title}",
                 "tooltip": "${ui.tool.tooltip}",
                 "toolRole": "toolset",

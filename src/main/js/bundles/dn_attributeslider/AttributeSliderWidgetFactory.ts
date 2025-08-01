@@ -14,34 +14,34 @@
 /// limitations under the License.
 ///
 
-import AttributeFilterWidget from "./template/AttributeFilterWidget.ts.vue";
+import AttributeSliderWidget from "./template/AttributeSliderWidget.ts.vue";
 import Vue from "apprt-vue/Vue";
 import VueDijit from "apprt-vue/VueDijit";
 import Binding, { Bindable } from "apprt-binding/Binding";
 
 import type { InjectedReference } from "apprt-core/InjectedReference";
 import type { MessagesReference } from "./nls/bundle";
-import type { AttributeFilterWidgetModel } from "./AttributeFilterWidgetModel";
-import type { AttributeFilterController } from "./AttributeFilterController";
+import type { AttributeSliderWidgetModel } from "./AttributeSliderWidgetModel";
+import type { AttributeSliderController } from "./AttributeSliderController";
 import type Tool from "ct/tools/Tool";
 
-export class AttributeFilterWidgetFactory {
+export class AttributeSliderWidgetFactory {
     private vm?: Vue;
     private toolActiveWatcher?: __esri.WatchHandle;
-    private attributeFilterModelBinding?: Bindable;
+    private attributeSliderModelBinding?: Bindable;
 
     private _i18n!: InjectedReference<MessagesReference>;
-    private _model: InjectedReference<AttributeFilterWidgetModel>;
-    private _controller: InjectedReference<AttributeFilterController>;
-    private _attributeFilterWidgetToggleTool: InjectedReference<Tool>;
+    private _model: InjectedReference<AttributeSliderWidgetModel>;
+    private _controller: InjectedReference<AttributeSliderController>;
+    private _attributeSliderWidgetToggleTool: InjectedReference<Tool>;
 
     activate(): void {
         this.initComponent();
     }
 
     deactivate(): void {
-        this.attributeFilterModelBinding?.unbind();
-        this.attributeFilterModelBinding = undefined;
+        this.attributeSliderModelBinding?.unbind();
+        this.attributeSliderModelBinding = undefined;
 
         this.vm = undefined;
     }
@@ -50,7 +50,7 @@ export class AttributeFilterWidgetFactory {
         const model = this._model!;
         const controller = this._controller!;
 
-        const vm: Vue = this.vm = new Vue(AttributeFilterWidget);
+        const vm: Vue = this.vm = new Vue(AttributeSliderWidget);
         vm.i18n = this._i18n!.get().ui;
         vm.sliderSettings = model.sliderSettings;
 
@@ -60,7 +60,7 @@ export class AttributeFilterWidgetFactory {
             controller.addSliderDefinitionExpressionToLayers(newValue);
         });
 
-        this.attributeFilterModelBinding = Binding.for(vm, model)
+        this.attributeSliderModelBinding = Binding.for(vm, model)
             .syncAll("sliderValue")
             .enable()
             .syncToLeftNow();
@@ -73,7 +73,7 @@ export class AttributeFilterWidgetFactory {
     }
 
     private createToolActiveWatcher(): void {
-        const tool = this._attributeFilterWidgetToggleTool!;
+        const tool = this._attributeSliderWidgetToggleTool!;
 
         this.toolActiveWatcher = tool.watch("active", (name, oldValue, newValue) => {
             const model = this._model!;

@@ -16,7 +16,7 @@
 
 import { Mutable, properties } from "apprt-core/Mutable";
 
-export interface AttributeFilterWidgetModelProperties {
+export interface AttributeSliderWidgetModelProperties {
     sliderValue: number;
 
     layerIds: string[];
@@ -24,9 +24,9 @@ export interface AttributeFilterWidgetModelProperties {
     applyToGroupContents: boolean; // Optional property to apply to group contents
 }
 
-export class AttributeFilterWidgetModel extends Mutable { }
+export class AttributeSliderWidgetModel extends Mutable { }
 
-properties(AttributeFilterWidgetModel, {
+properties(AttributeSliderWidgetModel, {
     sliderValue: 0,
 
     layerIds: [],

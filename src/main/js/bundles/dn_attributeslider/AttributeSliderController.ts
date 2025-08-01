@@ -13,17 +13,18 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
+
 import { whenOnce } from "esri/core/reactiveUtils";
 
 import type { InjectedReference } from "apprt-core/InjectedReference";
-import type { AttributeFilterWidgetModel } from "./AttributeFilterWidgetModel";
+import type { AttributeSliderWidgetModel } from "./AttributeSliderWidgetModel";
 import type { MapWidgetModel } from "map-widget/api";
 
-export class AttributeFilterController {
+export class AttributeSliderController {
     private view?: __esri.MapView | __esri.SceneView;
     private targetLayers?: __esri.Layer[];
 
-    private _model: InjectedReference<AttributeFilterWidgetModel>;
+    private _model: InjectedReference<AttributeSliderWidgetModel>;
     private _mapWidgetModel: InjectedReference<MapWidgetModel>;
 
     activate(): void {

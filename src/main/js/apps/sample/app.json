@@ -424,7 +424,7 @@
          "toolrules": {
             "ToolActiveStateManager": {
                 "activateOnStartToolIds": [
-                    "attributeFilterWidgetToggleTool"
+                    "attributeSliderWidgetToggleTool"
                 ]
             }
         },
@@ -434,7 +434,7 @@
                     {
                         "id": "mapview_tools",
                         "tools": [
-                            "attributeFilterWidgetToggleTool",
+                            "attributeSliderWidgetToggleTool",
                             "locateMeTool",
                             "zoomInTool",
                             "zoomOutTool",
