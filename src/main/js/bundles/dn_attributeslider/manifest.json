@@ -53,13 +53,13 @@
             ],
             "propertiesConstructor": true,
             "properties": {
-                "targetAttribute": "HAUSNR",
-                "applyToGroupContents": true,
                 "layerIds": [
                     "sights"
                 ],
+                "targetAttribute": "HAUSNR",
+                "applyToGroupContents": false,
                 "sliderSettings": {
-                    "sliderStartValue": 10,
+                    "sliderStartValue": null,
                     "min": 0,
                     "max": 50,
                     "step": 10,
