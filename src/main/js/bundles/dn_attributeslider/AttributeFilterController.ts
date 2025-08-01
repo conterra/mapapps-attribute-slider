@@ -71,7 +71,7 @@ export class AttributeFilterController {
                     }
                 });
             } else {
-                layer.definitionExpression = `${model.targetAttribute} > ${sliderValue.value}`;
+                layer.definitionExpression = `${model.targetAttribute} <= ${sliderValue.value}`;
             }
         });
     }
