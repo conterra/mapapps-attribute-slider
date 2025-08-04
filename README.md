@@ -5,6 +5,8 @@
 
 The Attribute Slider provides an interactive slider widget for filtering map layers based on attribute values. It allows users to dynamically adjust a numeric attribute filter on one or more layers. The widget supports configuration of the target attribute, comparison relation, and slider settings such as range, step, and visible elements. It can automatically apply or remove the filter when the widget is opened or closed, and supports group layers.
 
+![Screenshot App](https://github.com/conterra/mapapps-attribute-slider/blob/main/screenshot.png)
+
 ### Sample App
 
 [Sample App Link](https://demos.conterra.de/mapapps/resources/apps/public_demo_attributeslider/index.html)
