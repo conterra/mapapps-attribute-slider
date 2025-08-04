@@ -468,10 +468,9 @@
         </plugins>
     </build>
     <scm>
-        <connection>scm:git:https://github.com/conterra/mapapps-devnet-blueprint.git</connection>
-        <developerConnection>scm:git:https://github.com/conterra/mapapps-devnet-blueprint.git
-        </developerConnection>
-        <url>https://github.com/conterra/mapapps-devnet-blueprint</url>
+        <connection>scm:git:https://github.com/conterra/mapapps-attribute-slider.git</connection>
+        <developerConnection>scm:git:https://github.com/conterra/mapapps-attribute-slider.git</developerConnection>
+        <url>https://github.com/conterra/mapapps-attribute-slider</url>
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
