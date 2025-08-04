@@ -1,21 +1,24 @@
-# mapapps-devnet-blueprint
+[![devnet-bundle-snapshot](https://github.com/conterra/mapapps-attribute-slider/actions/workflows/devnet-bundle-snapshot.yml/badge.svg)](https://github.com/conterra/mapapps-attribute-slider/actions/workflows/devnet-bundle-snapshot.yml)
+![Static Badge](https://img.shields.io/badge/tested_for_map.apps-4.18.3-%20?labelColor=%233E464F&color=%232FC050)
 
-**This project is not intended for use by non-con terra users.** It is designed for the creation of bundles and their releases in GitHub and can access con terra internal infrastructures for this purpose. To develop your own map.apps bundles, use the [mapapps-4-developers project](https://github.com/conterra/mapapps-4-developers).
+# Attribute Slider
 
-This project is a starting point for programming custom map.apps bundles and themes. It contains examples for common tasks such as building widgets with Vue.js or creating your own custom themes.
-You may use this project as a blueprint for starting your own map.apps project.
+The Attribute Slider provides an interactive slider widget for filtering map layers based on attribute values. It allows users to dynamically adjust a numeric attribute filter on one or more layers. The widget supports configuration of the target attribute, comparison relation, and slider settings such as range, step, and visible elements. It can automatically apply or remove the filter when the widget is opened or closed, and supports group layers.
 
-Since both Typescript and Javascript can be used to implement bundles, this project contains two bundles with the same functionality, `sample_camera` implemented in Typescript and `sample_camera_js` implemented in Javascript.
-Initially only the `sample_camera` bundle is included in the `Demo` sample app.
+### Sample App
 
-For detailed documentation on how to use map.apps for Developers to extend map.apps, see the [map.apps Developer's Guide](https://docs.conterra.de/en/mapapps/latest/developersguide/getting-started/).
+[Sample App Link](https://demos.conterra.de/mapapps/resources/apps/public_demo_attributeslider/index.html)
 
-## Software Requirements
+### Documentation & Installation
+
+[Attribute Slider Documentation Link](https://github.com/conterra/mapapps-attribute-slider/tree/master/src/main/js/bundles/dn_attributeslider)
+
+## Development Quick Start
+
+### Software Requirements
 
 - Java >= 17
 - Maven >= 3.9.0
-
-## Quick start
 
 Clone this project and ensure that you have all required dependencies installed correctly (see [Documentation](https://docs.conterra.de/en/mapapps/latest/developersguide/getting-started/set-up-development-environment.html)).
 
