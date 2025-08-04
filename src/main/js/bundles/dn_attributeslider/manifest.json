@@ -30,8 +30,8 @@
                 "marginBox": {
                     "w": 550,
                     "h": 120,
-                    "r": 25,
-                    "t": 175
+                    "r": 250,
+                    "t": 50
                 },
                 "windowClass": "noPadding"
             }

@@ -14,4 +14,6 @@
 /// limitations under the License.
 ///
 
-///
+// import "./AttributeSliderController.spec";
+// import "./AttributeSliderWidgetFactory.spec";
+// import "./AttributeSliderWidgetModel.spec";
