@@ -1,6 +1,6 @@
 {
     "name": "dn_attributeslider",
-    "version": "1.0.0",
+    "version": "1.0.1-SNAPSHOT",
     "title": "${bundleName}",
     "description": "${bundleDescription}",
     "productName": "devnet-mapapps-attribute-slider",
