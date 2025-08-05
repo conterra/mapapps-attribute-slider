@@ -35,6 +35,7 @@
                 :ticks="sliderSettings.visibleElements.ticks"
                 :tick-labels="sliderSettings.visibleElements.tickLabels"
                 :thumb-label="sliderSettings.visibleElements.thumbLabel"
+                :always-dirty="true"
             />
             <span
                 v-if="sliderSettings.visibleElements.maxLabel"
