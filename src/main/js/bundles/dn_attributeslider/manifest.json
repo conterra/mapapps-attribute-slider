@@ -13,11 +13,11 @@
         "bundle"
     ],
     "dependencies": {
-        "ct": "^4.18.0",
-        "esri": "^4.18.0",
-        "apprt-vue": "^4.18.0",
-        "apprt-core": "^4.18.0",
-        "apprt-binding": "^4.18.0"
+        "@arcgis/core": "^4.33.0",
+        "ct": "^4.20.0",
+        "apprt-vue": "^4.20.0",
+        "apprt-core": "^4.20.0",
+        "apprt-binding": "^4.20.0"
     },
     "layout-widgets": [
         {

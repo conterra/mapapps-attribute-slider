@@ -14,7 +14,7 @@
 /// limitations under the License.
 ///
 
-import { whenOnce } from "esri/core/reactiveUtils";
+import { whenOnce } from "@arcgis/core/core/reactiveUtils";
 
 import type { InjectedReference } from "apprt-core/InjectedReference";
 import type { AttributeSliderWidgetModel } from "./AttributeSliderWidgetModel";
